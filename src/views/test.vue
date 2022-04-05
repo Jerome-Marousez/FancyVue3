@@ -21,24 +21,24 @@
 
         <div ref="mainSection" class="main-section">
 
-          <div style="display: flex; flex-direction: column">
+          <div class="column">
 
-            <div style="display: flex; align-items: center; flex-wrap: wrap">
+            <div class="row">
               <Button title="Submit" type="primary"/>
               <Button title="Cancel" type="alert"/>
               <Button title="toggle" type="toggle" v-model="toggle" tooltip="Toggle between states"/>
-              <Button title="&cross;" type="small" tooltip="Close window" label=""/>
+              <Button title="x" type="small" tooltip="Close window" label=""/>
             </div>
 
-            <div style="display: flex; flex-wrap: wrap">
+            <div class="row">
               <Input type="text" placeholder="first name" v-model="textA" :min="4" :max="12" />
               <Input type="number" placeholder="Age" v-model="textD" :min="4" :max="12" :required="true" tooltip="Choose wisely"/>
               <Input type="email" placeholder="email" :required="false" v-model="textB" tooltip="Choose wisely"/>
               <Input type="textarea" placeholder="Leave reply..." v-model="textC" label="Reply input"/>
             </div>
 
-            <div style="display: flex; flex-wrap: wrap">
-              <Slider :min="0" :max="100" v-model="slider" :steps="10"/>
+            <div class="row">
+              <Slider :min="0" :max="100" v-model="slider" :steps="10" color="var(--green)"/>
             </div>
 
             <div>
@@ -49,16 +49,18 @@
               <Modal v-if="modalActive" v-on:closeModal="closeModal" v-on:confirmModal="confirmModal" header="Welcome!" body=""/>
             </div>
 
-            <!--      <div style="display: flex; flex-wrap: wrap">-->
-            <!--        <Graph :x="dataX" :y="dataY" type="slim" title="Wheat production in the US"/>-->
-            <!--        <Graph :x="dataX" :y="dataY" type="line" title="US population"/>-->
-            <!--        <Graph :x="dataX" :y="dataY" type="bar" title="Wheat export in the US"/>-->
-            <!--        <Graph :x="dataX" :y="dataY" type="pie" title="Bigfoot sightings in the US"/>-->
-            <!--      </div>-->
-
           </div>
 
 
+          <div class="row">
+            <Socials title="facebook" color="var(--green)"/>
+            <Socials title="twitter" color="var(--blue)" url="https://twitter.com/lporiginalg"/>
+            <Socials title="instagram" color="var(--red)"/>
+            <Socials title="instagram" color="var(--yellow)"/>
+            <Socials title="twitter" color="var(--purple)"/>
+            <Socials title="facebook" color="var(--grey)"/>
+            <Socials title="instagram" color="var(--pink)"/>
+          </div>
 
 <!--          <div class="grid">-->
 <!--            <div class="grid-unit">1</div>-->
@@ -76,16 +78,25 @@
 <!--            <div class="grid-unit">13</div>-->
 <!--          </div>-->
 
+
+          <Select placeholder="fruit" v-model="selected" :options="options"/>
+
+
+
         </div>
 
+
+
+
+
       </div>
+
     </div>
 
 
-
-    <Loading v-if="loading" type="cube" color="var(--green)" opacity=".4" radius=".15em"/>
+<!--    <Loading v-if="loading" type="cube" color="var(&#45;&#45;green)" opacity=".4" radius=".15em"/>-->
 <!--    <Loading v-if="loading" type="trinity" color="var(&#45;&#45;green)" opacity=".6" radius=".1em"/>-->
-<!--    <Loading v-if="loading" type="layers" color="var(&#45;&#45;green)" opacity=".8" radius=".5em"/>-->
+    <Loading v-if="loading" type="layers" color="var(--green)" opacity=".8" radius=".5em"/>
 
 
   </div>
@@ -96,9 +107,10 @@ import Button from "@/components/Tools/Button"
 import Input from "@/components/Tools/Input"
 import Modal from "@/components/Tools/Modal"
 import Checkbox from "@/components/Tools/Checkbox"
-import Graph from "@/components/Tools/Graph"
 import Loading from "@/components/Tools/Loading"
 import Slider from "@/components/Tools/Slider"
+import Socials from "@/components/Tools/Socials"
+import Select from "@/components/Tools/Select"
 
 export default {
   name: "SlrCSS",
@@ -108,9 +120,10 @@ export default {
     Input,
     Modal,
     Checkbox,
-    Graph,
     Loading,
     Slider,
+    Socials,
+    Select,
   },
 
   data(){
@@ -123,10 +136,10 @@ export default {
       textB: '',
       textC: '',
       textD: null,
-      dataY: [200, 89, 145, 355, 186, 221, 12, 289],
-      dataX: [1987, 1986, 1989, 1990, 1985, 1991, 1984, 1992],
       theme: true,
       slider: 50,
+      options: ['Cherry', 'Strawberry', 'Apple'],
+      selected: "",
     }
   },
 

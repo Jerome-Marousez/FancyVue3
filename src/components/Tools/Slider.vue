@@ -19,6 +19,7 @@ export default {
     max: Number,
     modelValue: Number,
     steps: Number,
+    color: String,
   },
 
   data() {
@@ -89,7 +90,7 @@ export default {
   width: calc(v-bind(thumbHalfWidth) * 0.2em);
   height: calc(v-bind(thumbHalfWidth) * 0.2em);
   border-radius: 100vw;
-  background: var(--green);
+  background: v-bind(color);
   cursor: pointer;
   position: relative;
 }
@@ -98,7 +99,7 @@ export default {
   width: calc(v-bind(thumbHalfWidth) * 0.2em);
   height: calc(v-bind(thumbHalfWidth) * 0.2em);
   border-radius: 100vw;
-  background: var(--green);
+  background: v-bind(color);
   cursor: pointer;
   position: relative;
   outline: none;

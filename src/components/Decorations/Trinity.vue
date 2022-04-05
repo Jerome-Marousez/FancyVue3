@@ -24,7 +24,20 @@ export default {
     return {}
   },
 
-  computed: {},
+  computed: {
+    lightestColor(){
+      return [this.color.slice(0, this.color.length-1), '-lighter', this.color.slice(this.color.length-1)].join('')
+    },
+    lighterColor(){
+      return [this.color.slice(0, this.color.length-1), '-light', this.color.slice(this.color.length-1)].join('')
+    },
+    darkerColor(){
+      return [this.color.slice(0, this.color.length-1), '-dark', this.color.slice(this.color.length-1)].join('')
+    },
+    darkestColor(){
+      return [this.color.slice(0, this.color.length-1), '-darker', this.color.slice(this.color.length-1)].join('')
+    },
+  },
 
   methods: {},
 
@@ -59,15 +72,15 @@ export default {
 }
 .spinner.spinner-2 {
   border-bottom: v-bind(radius) solid transparent;
-  border-left: v-bind(radius) solid v-bind(color);
-  border-top: v-bind(radius) solid v-bind(color);
+  border-left: v-bind(radius) solid v-bind(darkerColor);
+  border-top: v-bind(radius) solid v-bind(darkerColor);
   right: 0;
   animation: spin 2s infinite linear;
 }
 .spinner.spinner-3 {
   border-left: v-bind(radius) solid transparent;
-  border-top: v-bind(radius) solid v-bind(color);
-  border-right: v-bind(radius) solid v-bind(color);
+  border-top: v-bind(radius) solid v-bind(lighterColor);
+  border-right: v-bind(radius) solid v-bind(lighterColor);
   bottom: 0;
   left: 20%;
   animation: spin 2s infinite linear;

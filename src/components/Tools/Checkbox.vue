@@ -22,7 +22,9 @@
           tabindex="0"
           :title="tooltip ? tooltip : label"
           :aria-label="label ? label : tooltip"
-      >&check;</div>
+      >
+        <i class="fas fa-check" />
+      </div>
     </div>
 
 
@@ -99,7 +101,6 @@ export default {
   align-items: center;
   border-radius: var(--radius-xs);
   outline: .1em solid var(--borders-weak);
-  font-size: 1.2rem;
   overflow: hidden;
 }
 .checkbox:focus{
@@ -108,7 +109,8 @@ export default {
   box-shadow: 0 0 5px var(--blue);
 }
 .checked{
-  padding: 0 .1em;
+  padding: .3em;
+  font-size: .8em;
   border-radius: var(--radius-xs);
   background-color: var(--green-dark);
   color: white;

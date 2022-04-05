@@ -27,7 +27,20 @@ export default {
     return {}
   },
 
-  computed: {},
+  computed: {
+    lightestColor(){
+      return [this.color.slice(0, this.color.length-1), '-lighter', this.color.slice(this.color.length-1)].join('')
+    },
+    lighterColor(){
+      return [this.color.slice(0, this.color.length-1), '-light', this.color.slice(this.color.length-1)].join('')
+    },
+    darkerColor(){
+      return [this.color.slice(0, this.color.length-1), '-dark', this.color.slice(this.color.length-1)].join('')
+    },
+    darkestColor(){
+      return [this.color.slice(0, this.color.length-1), '-darker', this.color.slice(this.color.length-1)].join('')
+    },
+  },
 
   methods: {},
 

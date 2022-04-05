@@ -2,7 +2,7 @@
   
   <div v-if="type !== 'textarea'" class="input-container" :data-tooltip="tooltip">
 
-    <legend v-show="modelValue" class="legend">
+    <legend v-if="modelValue" class="legend">
         {{ placeholder.charAt(0).toUpperCase() + this.placeholder.slice(1) + (required ? ' (required)' : '') }}
     </legend>
 
@@ -27,8 +27,8 @@
     >
 
     <div v-if="type === 'number'" class="arrows">
-      <div class="arrow left" @click.self="updateNumber('increase')">&#10096;</div>
-      <div class="arrow right" @click.self="updateNumber('decrease')">&#10097;</div>
+      <div class="arrow" @click.stop="updateNumber('increase')"><i class="fas fa-chevron-up"/></div>
+      <div class="arrow" @click.stop="updateNumber('decrease')"><i class="fas fa-chevron-down"/></div>
     </div>
 
     <div v-if="error" class="error-message">{{ error }}</div>
@@ -206,6 +206,7 @@ export default {
 
 <style scoped>
 .input-container{
+  height: 3.8em;
   margin: .5em;
   display: flex;
   width: 18em;
@@ -249,22 +250,42 @@ export default {
   margin-top: 0.3em;
   color: var(--red);
   font-size: .8rem;
-  margin-left: 0.5em;
+  margin-left: .5em;
   user-select: none;
+  animation: grow-top .2s linear forwards;
+  transform-origin: top;
+}
+@keyframes grow-top {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
 }
 .legend{
   position: absolute;
-  top: -.5em;
+  top: -.6em;
   color: var(--text-light);
   font-size: .8rem;
   display: flex;
   width: fit-content;
   height: fit-content;
   margin-left: 0.5em;
-  padding: 0 0.5em;
-  background-color: var(--bg-primary);
+  padding: 0 0.8em;
+  background: linear-gradient(90deg, rgba(2,0,36,0) 0%, var(--bg-primary) 10%, var(--bg-primary) 50%, var(--bg-primary) 90%, rgba(0,212,255,0) 100%);
   z-index: 10;
   user-select: none;
+  animation: grow-left .2s linear forwards;
+  transform-origin: left;
+}
+@keyframes grow-left {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
 }
 
 .input[type = number]::-webkit-inner-spin-button,
@@ -284,26 +305,12 @@ input[type = number] {
   right: .5em;
   top: .1em;
   cursor: pointer;
-}
-.arrow{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: .8em;
-  height: 50%;
   color: var(--text-light);
   user-select: none;
 }
 .arrow:hover{
   color: var(--text-disabled);
 }
-.arrow.left{
-  transform: rotate(90deg);
-}
-.arrow.right{
-  transform: rotate(90deg);
-}
-
 .textarea{
   box-sizing: border-box;
   position: relative;

@@ -10,23 +10,61 @@
     --radius-xl: 1em;
 
     /* COLORS */
+    --red-lightest: hsl(0, 50%, 90%);
     --red-lighter: hsl(0, 50%, 75%);
     --red-light: hsl(0, 50%, 60%);
     --red: hsl(0, 50%, 45%);
     --red-dark: hsl(0, 50%, 35%);
     --red-darker: hsl(0, 50%, 25%);
+    --red-darkest: hsl(0, 50%, 15%);
 
+    --yellow-lightest: hsl(30, 50%, 90%);
+    --yellow-lighter: hsl(30, 50%, 75%);
+    --yellow-light: hsl(30, 50%, 60%);
+    --yellow: hsl(30, 50%, 45%);
+    --yellow-dark: hsl(30, 50%, 35%);
+    --yellow-darker: hsl(30, 50%, 25%);
+    --yellow-darkest: hsl(30, 50%, 15%);
+
+    --green-lightest: hsl(120, 50%, 90%);
     --green-lighter: hsl(120, 50%, 75%);
     --green-light: hsl(120, 50%, 60%);
     --green: hsl(120, 50%, 45%);
     --green-dark: hsl(120, 50%, 35%);
     --green-darker: hsl(120, 50%, 25%);
+    --green-darkest: hsl(120, 50%, 15%);
 
+    --blue-lightest: hsl(200, 50%, 90%);
     --blue-lighter: hsl(200, 50%, 75%);
     --blue-light: hsl(200, 50%, 60%);
     --blue: hsl(200, 50%, 45%);
     --blue-dark: hsl(200, 50%, 35%);
     --blue-darker: hsl(200, 50%, 25%);
+    --blue-darkest: hsl(200, 50%, 15%);
+
+    --pink-lightest: hsl(320, 50%, 90%);
+    --pink-lighter: hsl(320, 50%, 75%);
+    --pink-light: hsl(320, 50%, 60%);
+    --pink: hsl(320, 50%, 45%);
+    --pink-dark: hsl(320, 50%, 35%);
+    --pink-darker: hsl(320, 50%, 25%);
+    --pink-darkest: hsl(320, 50%, 15%);
+
+    --purple-lightest: hsl(270, 50%, 90%);
+    --purple-lighter: hsl(270, 50%, 75%);
+    --purple-light: hsl(270, 50%, 60%);
+    --purple: hsl(270, 50%, 45%);
+    --purple-dark: hsl(270, 50%, 35%);
+    --purple-darker: hsl(270, 50%, 25%);
+    --purple-darkest: hsl(270, 50%, 15%);
+
+    --grey-lightest: hsl(0, 0%, 90%);
+    --grey-lighter: hsl(0, 0%, 75%);
+    --grey-light: hsl(0, 0%, 60%);
+    --grey: hsl(0, 0%, 50%);
+    --grey-dark: hsl(0, 0%, 35%);
+    --grey-darker: hsl(0, 0%, 25%);
+    --grey-darkest: hsl(0, 0%, 15%);
 
 }
 
@@ -150,8 +188,8 @@ body {
 .row {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 

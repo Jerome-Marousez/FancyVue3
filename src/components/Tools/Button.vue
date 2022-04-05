@@ -4,13 +4,16 @@
     <button
         v-if="type !== 'toggle'"
         :class="classes"
-        @mousedown="handleMouseDown"
+        @mousedown.="handleMouseDown"
         @mouseup="handleClick"
         @mouseover="hideTitle"
         @mouseleave="restoreTitle"
         :title="tooltip ? tooltip : label"
         :aria-label="label ? label : title"
-    >{{ title.charAt(0).toUpperCase() + title.slice(1) }}</button>
+    >
+      <div v-if="title !== 'x'" style="pointer-events: none">{{ title.charAt(0).toUpperCase() + title.slice(1) }}</div>
+      <i v-if="title === 'x'" class="fas fa-times" style="pointer-events: none" />
+    </button>
 
     <button
         v-if="type === 'toggle'"
@@ -155,7 +158,7 @@ export default {
   font-weight: bold;
 }
 .btn.small:hover {
-  background: var(--bg-secondary);
+  background: var(--grey-lightest);
 }
 
 .btn.toggle {
