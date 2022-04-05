@@ -1,0 +1,17 @@
+:root{
+
+    /* TEXT */
+    --text: black;
+    --text-light: hsl(0, 0%, 40%);
+    --text-disabled: hsl(0, 0%, 80%);
+
+    /* BACKGROUND */
+    --bg-primary: hsl(0, 100%, 100%);
+    --bg-secondary: hsl(0, 0%, 90%);
+    --bg-selection: var(--blue-lighter);
+
+    /* BORDERS */
+    --borders-strong: hsl(0, 0%, 50%);
+    --borders-weak: hsl(0, 0%, 75%);
+
+}

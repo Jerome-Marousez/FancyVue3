@@ -1,0 +1,261 @@
+:root{
+
+    /* DISPLAY */
+    --root-font-size: 1em;
+    --max-width: 1200px;
+
+    /* RADIUS */
+    --radius-xs: .2em;
+    --radius-s: .3em;
+    --radius-xl: 1em;
+
+    /* COLORS */
+    --red-lighter: hsl(0, 50%, 75%);
+    --red-light: hsl(0, 50%, 60%);
+    --red: hsl(0, 50%, 45%);
+    --red-dark: hsl(0, 50%, 35%);
+    --red-darker: hsl(0, 50%, 25%);
+
+    --green-lighter: hsl(120, 50%, 75%);
+    --green-light: hsl(120, 50%, 60%);
+    --green: hsl(120, 50%, 45%);
+    --green-dark: hsl(120, 50%, 35%);
+    --green-darker: hsl(120, 50%, 25%);
+
+    --blue-lighter: hsl(200, 50%, 75%);
+    --blue-light: hsl(200, 50%, 60%);
+    --blue: hsl(200, 50%, 45%);
+    --blue-dark: hsl(200, 50%, 35%);
+    --blue-darker: hsl(200, 50%, 25%);
+
+}
+
+
+/* ------- Table of content -------- */
+/*                                   */
+/*                                   */
+/*  1.DEFAULT STYLING                */
+/*                                   */
+/*  é.GENERAL STYLING                */
+/*                                   */
+/*  3.FLEXBOX DESIGN PATTERNS        */
+/*                                   */
+/*  4.TEXT STYLING                   */
+/*                                   */
+/*  5.TOOLTIP                        */
+/*                                   */
+/*  6.SCROLLBAR                      */
+/*                                   */
+/*                                   */
+/* --------------------------------- */
+
+
+
+/* ----------------------- */
+/* DEFAULT STYLING         */
+/* ----------------------- */
+@font-face {
+    font-family: 'Dosis';
+    src: local('Dosis'), url('../../public/fonts/Dosis/Dosis-Regular.woff2') format('woff2');
+    unicode-range: U+000-5FF;
+    font-weight: 500;
+    font-style: normal;
+    font-display: auto;
+}
+@font-face {
+    font-family: 'Dosis';
+    src: local('Dosis'), url('../../public/fonts/Dosis/Dosis-Bold.woff2') format('woff2');
+    unicode-range: U+000-5FF;
+    font-weight: bold;
+    font-style: normal;
+    font-display: auto;
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-delay: -1ms !important;
+        animation-duration: 1ms !important;
+        animation-iteration-count: 1 !important;
+        background-attachment: initial !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+    }
+}
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /*user-select: none;*/
+    scroll-behavior: smooth;
+    transition: color .1s, background .5s;
+}
+
+html {
+    font-size: var(--root-font-size);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text);
+    overflow: hidden;
+}
+
+
+/* ----------------------- */
+/* FLEXBOX DESIGN PATTERNS */
+/* ----------------------- */
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    padding: 1em;
+
+}
+.grid > * {
+    flex: 1 1 15em;
+    padding: 1em;
+    padding-block: min(5vh, 10rem);
+
+    border: 1px solid #c6c6c6;
+}
+
+.content-sidebar {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: clamp( min( 100%, var(--max-width) ), 90%, var(--max-width) );
+    outline: 1px solid var(--bg-secondary);
+}
+.content-sidebar > *:nth-child(1) {
+    flex: 1 1 min(10em, 25%);
+    transform-origin: left;
+    transition: transform 1s ease-out;
+}
+.content-sidebar > *:nth-child(2) {
+    flex: 1 1 max(70ch, 75%);
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+
+/* ----------------------- */
+/* TEXT STYLING            */
+/* ----------------------- */
+
+::selection {
+    background-color: var(--bg-selection);
+}
+h1, h2, h3 {
+    line-height: 1.1;
+}
+
+p {
+    line-height: 1.5;
+}
+
+
+/* ----------------------- */
+/* TOOLTIP                 */
+/* ----------------------- */
+
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::before,
+[data-tooltip]::after {
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+}
+
+[data-tooltip]:hover::before,
+[data-tooltip]:hover::after {
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+}
+
+[data-tooltip]:hover::before {
+    content: attr(data-tooltip);
+    z-index: 100;
+    line-height: 1em;
+    transform: translate(-50%, calc(-100% - 1em));
+    max-width: fit-content;
+    width: max-content;
+    background-color: var(--bg-secondary);
+    padding: .5em;
+    color: var(--text-light);
+    border-radius: var(--radius-s);
+    text-align: center;
+    animation: visible 1.5s forwards;
+}
+
+[data-tooltip]:hover::after {
+    content: '';
+    border: .5em solid transparent;
+    border-top-color: var(--bg-secondary);
+    transform: translate(-50%, -1em);
+    animation: visible 1.5s forwards;
+}
+
+@keyframes visible {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* ----------------------- */
+/* SCROLLBAR               */
+/* ----------------------- */
+
+::-webkit-scrollbar {
+    width: 0.6rem;
+    height: 0.6rem;
+}
+
+::-webkit-scrollbar-track {
+    /*background-color: var(--blue-light);*/
+    border-radius: 100vw;
+    margin-block: .4rem;
+    margin-inline: .4rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--blue-light);
+    /*border: .15em solid var(--blue-light);*/
+    border-radius: 100vw;
+}
+
+/* FIREFOX SUPPORT */
+@supports (scrollbar-color: red blue) {
+    * {
+        scrollbar-color: var(--blue-light) transparent;
+    }
+}
+
+
+
+
+
